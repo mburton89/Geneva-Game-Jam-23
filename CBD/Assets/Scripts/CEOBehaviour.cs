@@ -22,14 +22,15 @@ public class CEOBehaviour : MonoBehaviour
     {
         hp = 100f;
         moveSpeed = 2f;
-        jumpForce = 5f;
+        jumpForce = .2f;
         maxSpeed = 5f;
-        attackDistance = 5f;
+        attackDistance = 10f;
         isGrounded = false;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
     }
 
     // Update is called once per frame
@@ -41,7 +42,7 @@ public class CEOBehaviour : MonoBehaviour
         {
             Jump();
         }
-
+        Debug.Log(isGrounded);
     }
 
     void OnCollisionEnter(Collision collision)
