@@ -7,14 +7,14 @@ public class CharacterMover : MonoBehaviour
     public float movementSpeed;
     //public GameObject player;
 
-    public Camera playerCamera;
+    public Transform playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
     float rotationX = 0;
 
     void Update()
     {
-        //playerCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        playerCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         Mover();
         LookAtMouse();
     }
@@ -44,7 +44,7 @@ public class CharacterMover : MonoBehaviour
     {
         rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        playerCamera.localRotation = Quaternion.Euler(rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
     }
 }
