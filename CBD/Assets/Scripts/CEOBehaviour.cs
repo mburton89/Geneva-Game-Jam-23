@@ -41,8 +41,14 @@ public class CEOBehaviour : MonoBehaviour
         Debug.Log(hp);
         if (hp > 0)
         {
-            hp = hp - 2;
+            hp = hp - 1;
+        }
+        else
+        {
+            hp = 0;
+            Destroy(gameObject);
         }
         GreenHP.ChangeHP(hp);
+
     }
 }
