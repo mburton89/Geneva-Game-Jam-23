@@ -12,14 +12,6 @@ public class CharacterMover : MonoBehaviour
     public float lookXLimit = 45.0f;
     float rotationX = 0;
 
-
-
-
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         Mover();
