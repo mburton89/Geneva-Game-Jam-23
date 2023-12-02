@@ -14,6 +14,7 @@ public class CharacterMover : MonoBehaviour
 
     void Update()
     {
+        //playerCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         Mover();
         LookAtMouse();
     }
@@ -38,7 +39,6 @@ public class CharacterMover : MonoBehaviour
         }
 
     }
-
 
     void LookAtMouse()
     {
