@@ -11,6 +11,12 @@ public class BossBar : MonoBehaviour
     public void ChangeHP(float hp)
     {
         Debug.Log(hp / maxHP);
-        GreenHP.gameObject.transform.localScale = new Vector3((hp/maxHP), (float)1.1, (float)1.1);
+        if((hp/maxHP) >0.2)
+        {
+            GreenHP.gameObject.transform.localScale = new Vector3((hp / maxHP), (float)1.1, (float)1.1);
+        }
+        else
+            GreenHP.gameObject.transform.localScale = new Vector3((float)0.05, (float)1.1, (float)1.1);
+
     }
 }
