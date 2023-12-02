@@ -54,7 +54,7 @@ public class LiftOpen : MonoBehaviour
             Debug.Log(counter);
         }
 
-        if ((dist < (DistFromFloor-1)) && (counter >= 8) && (counter < 17) && isBossDead)
+        if ((dist < (DistFromFloor-1)) && (counter >= 8) && (counter < 16) && isBossDead)
         {
             CloseDoors();
             Debug.Log(counter);
