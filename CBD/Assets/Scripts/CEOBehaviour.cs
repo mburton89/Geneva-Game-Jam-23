@@ -5,12 +5,12 @@ using UnityEngine;
 public class CEOBehaviour : MonoBehaviour
 {
     // Main variables
-    public float hp;
-    public float moveSpeed;
-    public float maxSpeed;
-    public float jumpForce;
-    public float attackDistance;
-    public bool isGrounded;
+    public float hp = 100f;
+    public float moveSpeed = 2f;
+    public float maxSpeed = 0.5f;
+    public float jumpForce = 0.5f;
+    public float attackDistance = 10f;
+    public bool isGrounded = false;
 
     public LiftOpen Lift;
     // Unity variables
@@ -21,12 +21,12 @@ public class CEOBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hp = 100f;
-        moveSpeed = 2f;
-        jumpForce = 0.5f;
-        maxSpeed = 5f;
-        attackDistance = 10f;
-        isGrounded = false;
+        //hp = 100f;
+        //moveSpeed = 2f;
+        //jumpForce = 0.5f;
+        //maxSpeed = 5f;
+        //attackDistance = 10f;
+        //isGrounded = false;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
@@ -86,6 +86,8 @@ public class CEOBehaviour : MonoBehaviour
     {
         // Move towards the player
         Vector3 direction = HorizontalDirection(transform.position, player.position);
+
+        //transform.position = Vector3.MoveTowards(transform.position, player.position, (float) 0.002);
         if (rb.velocity.magnitude <= maxSpeed)
         {
             rb.AddForce(direction * moveSpeed);
