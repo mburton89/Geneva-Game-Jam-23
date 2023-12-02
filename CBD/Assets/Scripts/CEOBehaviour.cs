@@ -9,6 +9,7 @@ public class CEOBehaviour : MonoBehaviour
     public float moveSpeed;
     public BossBar GreenHP;
 
+    public LiftOpen Lift;
     // Unity variables
     //Rigidbody rb;
     public Transform player;
@@ -47,6 +48,7 @@ public class CEOBehaviour : MonoBehaviour
         {
             hp = 0;
             Destroy(gameObject);
+            Lift.BossDead();
         }
         GreenHP.ChangeHP(hp);
     }

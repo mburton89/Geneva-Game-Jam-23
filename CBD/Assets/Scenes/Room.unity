@@ -2325,11 +2325,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1059904669}
-  Floor: {fileID: 88875442}
+  BackWall: {fileID: 1748182539}
   DoorR: {fileID: 1725377083}
   DoorL: {fileID: 2059442319}
   CooldownDuration: 0.5
-  DistFromFloor: 7
+  DistFromFloor: 11
 --- !u!1 &1237177802
 GameObject:
   m_ObjectHideFlags: 0
@@ -2934,6 +2934,7 @@ MonoBehaviour:
   hp: 5
   moveSpeed: 2
   GreenHP: {fileID: 544835677}
+  Lift: {fileID: 1189129899}
   player: {fileID: 1059904669}
 --- !u!1 &1409453448
 GameObject:
@@ -3955,7 +3956,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e89b79f1974a99141b2790eff5722bfa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5116,7 +5117,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e25e4dd4603f02a4085c4a2c14be2cdd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
