@@ -2041,7 +2041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf281a970513e5148ba900d819c66d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4
+  movementSpeed: 6
   playerCamera: {fileID: 1916440724}
   lookSpeed: 2
   lookXLimit: 45

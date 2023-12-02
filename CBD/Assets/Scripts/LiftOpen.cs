@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LiftOpen : MonoBehaviour
 {
+    private bool done = true;
     public Transform Player;
 
     public Transform BackWall;
@@ -14,7 +16,6 @@ public class LiftOpen : MonoBehaviour
     public float CooldownDuration = 1.0f;
 
     private int counter = 0;
-    private int counter2 = 0;
     public int DistFromFloor;
 
     bool isBossDead = false;
@@ -58,8 +59,8 @@ public class LiftOpen : MonoBehaviour
         {
             CloseDoors();
             Debug.Log(counter);
-
         }
+        ChangeScene();
     }
 
     public void OpenDoors()
@@ -96,5 +97,15 @@ public class LiftOpen : MonoBehaviour
     public void BossDead()
     {
         isBossDead = true;
+    }
+
+    void ChangeScene()
+    {
+        if(isBossDead && (counter == 16) && done)
+        {
+            done = false;
+            SceneManager.LoadScene("End", LoadSceneMode.Single);
+            
+        }
     }
 }
