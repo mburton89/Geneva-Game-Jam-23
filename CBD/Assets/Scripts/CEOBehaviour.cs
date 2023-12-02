@@ -21,11 +21,11 @@ public class CEOBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hp = 100f;
+        /*hp = 100f;
         moveSpeed = 2f;
         jumpForce = 0.5f;
         maxSpeed = 5f;
-        attackDistance = 10f;
+        attackDistance = 10f;*/
         isGrounded = false;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
