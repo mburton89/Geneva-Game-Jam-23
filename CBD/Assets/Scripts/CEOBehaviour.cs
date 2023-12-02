@@ -22,9 +22,9 @@ public class CEOBehaviour : MonoBehaviour
     {
         hp = 100f;
         moveSpeed = 2f;
-        jumpForce = 0.5f;
+        jumpForce = 5f;
         maxSpeed = 5f;
-        attackDistance = 10f;
+        attackDistance = 5f;
         isGrounded = false;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;

@@ -11,10 +11,13 @@ public class CharacterMover : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
     float rotationX = 0;
+    Rigidbody rb;
 
     void Update()
     {
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
         Mover();
         LookAtMouse();
     }
