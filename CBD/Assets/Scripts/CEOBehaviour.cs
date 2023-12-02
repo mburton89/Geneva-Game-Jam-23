@@ -10,7 +10,7 @@ public class CEOBehaviour : MonoBehaviour
 
     // Unity variables
     //Rigidbody rb;
-    private Transform player;
+    public Transform player;
 
     // Start is called before the first frame update
     void Start()
@@ -33,5 +33,14 @@ public class CEOBehaviour : MonoBehaviour
         // Move towards the player
         Vector3 direction = (player.position - transform.position).normalized;
         transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
+    }
+
+    public void TakeDamage()
+    {
+        Debug.Log(hp);
+        if (hp > 0)
+        {
+            hp = hp - 2;
+        }
     }
 }
