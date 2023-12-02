@@ -7,6 +7,7 @@ public class CEOBehaviour : MonoBehaviour
     // Main variables
     public float hp;
     public float moveSpeed;
+    public BossBar GreenHP;
 
     // Unity variables
     //Rigidbody rb;
@@ -15,8 +16,8 @@ public class CEOBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hp = 100f;
-        moveSpeed = 4f;
+        //hp = 100f;
+        //moveSpeed = 4f;
 
         //rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -42,5 +43,6 @@ public class CEOBehaviour : MonoBehaviour
         {
             hp = hp - 2;
         }
+        GreenHP.ChangeHP(hp);
     }
 }
