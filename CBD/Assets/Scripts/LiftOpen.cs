@@ -20,10 +20,13 @@ public class LiftOpen : MonoBehaviour
 
     bool isBossDead = false;
 
+    public AudioSource ElevatorDing;
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(StartCooldown());
+        ElevatorDing.Play();
     }
 
     // Update is called once per frame
@@ -97,6 +100,7 @@ public class LiftOpen : MonoBehaviour
     public void BossDead()
     {
         isBossDead = true;
+        ElevatorDing.Play();
     }
 
     void ChangeScene()

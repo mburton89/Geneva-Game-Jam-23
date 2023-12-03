@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class RestartGame : MonoBehaviour
 {
+    public AudioSource LiftMusic;
+
+    private void Start()
+    {
+        LiftMusic.Play();
+    }
 
     void Update()
     {

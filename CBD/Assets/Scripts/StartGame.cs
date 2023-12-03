@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
-
+    public AudioSource LiftMusic;
+    private void Start()
+    {
+        LiftMusic.Play();
+    }
     void Update()
     {
         ChangeScene();
