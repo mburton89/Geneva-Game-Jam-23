@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CEOBehaviour : MonoBehaviour
 {
+    public AudioSource Hurt;
     // Main variables
     public float hp;
     public float moveSpeed;
@@ -116,6 +117,7 @@ public class CEOBehaviour : MonoBehaviour
         Debug.Log(hp);
         if (hp > 1)
         {
+            Hurt.Play();
             hp = hp - 1;
         }
         else

@@ -17,6 +17,7 @@ public class DealDamage : MonoBehaviour
     void Start()
     {
         canHit = true;
+        StartCoroutine(StartCooldown()); 
     }
 
     void Update()
