@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LiftOpen : MonoBehaviour
 {
+    private bool done = true;
     public Transform Player;
 
-    public Transform Floor;
+    public Transform BackWall;
 
     public GameObject DoorR;
     public GameObject DoorL;
@@ -16,27 +18,55 @@ public class LiftOpen : MonoBehaviour
     private int counter = 0;
     public int DistFromFloor;
 
+    bool isBossDead = false;
+
+    public AudioSource ElevatorDing;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(StartCooldown());
+        ElevatorDing.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float dist = Vector3.Distance(Player.position, Floor.position);
+        float dist = Vector3.Distance(Player.position, BackWall.position);
 
-        if (counter<9)
+        if ((counter<9) && !isBossDead)
+        {
+            
             OpenDoors();
-        if((dist > DistFromFloor) && (counter>=9) && (counter<18))
+            Debug.Log(counter);
+        }
+            
+
+        if((dist > DistFromFloor) && (counter>=9) && (counter<17) && !isBossDead)
         {
             CloseDoors();
+            Debug.Log(counter);
         }
+
+        if ((counter == 17) && isBossDead)
+            counter = 0;
+
+        if(isBossDead && (counter<8) && (dist > DistFromFloor))
+        {
+         
+            OpenDoors();
+            Debug.Log(counter);
+        }
+
+        if ((dist < (DistFromFloor-1)) && (counter >= 8) && (counter < 16) && isBossDead)
+        {
+            CloseDoors();
+            Debug.Log(counter);
+        }
+        ChangeScene();
     }
 
-    void OpenDoors()
+    public void OpenDoors()
     {
         if(openDelay)
         {
@@ -65,6 +95,21 @@ public class LiftOpen : MonoBehaviour
             DoorL.transform.position += new Vector3(0, 0, (float)-0.5);
             StartCoroutine(StartCooldown());
         }
+    }
 
+    public void BossDead()
+    {
+        isBossDead = true;
+        ElevatorDing.Play();
+    }
+
+    void ChangeScene()
+    {
+        if(isBossDead && (counter == 16) && done)
+        {
+            done = false;
+            SceneManager.LoadScene("End", LoadSceneMode.Single);
+            
+        }
     }
 }

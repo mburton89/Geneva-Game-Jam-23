@@ -15,6 +15,7 @@ public class CEOBehaviour : MonoBehaviour
     public bool canAttack;
     public float attackCooldown;
 
+    public LiftOpen Lift;
     // Unity variables
     public Transform player;
     Rigidbody rb;
@@ -35,10 +36,13 @@ public class CEOBehaviour : MonoBehaviour
         attackCooldown = 5f;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        coffeeCupPrefab = transform.Find("CoffeeCup").gameObject;
+        coffeeCupPrefab = GameObject.FindGameObjectWithTag("CoffeeCup");
+        Debug.Log(coffeeCupPrefab);
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        InvokeRepeating("CoffeeCupProjectile", 0, 3);
     }
 
     // Update is called once per frame
@@ -101,6 +105,7 @@ public class CEOBehaviour : MonoBehaviour
     {
         // Move towards the player
         Vector3 direction = HorizontalDirection(transform.position, player.position);
+        transform.LookAt(player);
         if (rb.velocity.magnitude <= maxSpeed)
         {
             rb.AddForce(direction * moveSpeed);
@@ -152,6 +157,7 @@ public class CEOBehaviour : MonoBehaviour
         {
             hp = 0;
             Destroy(gameObject);
+            Lift.BossDead();
         }
         GreenHP.ChangeHP(hp);
     }
