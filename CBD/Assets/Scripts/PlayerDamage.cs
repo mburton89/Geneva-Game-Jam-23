@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDamage : MonoBehaviour
 {
     public float hp = 100;
+    public Vector3 spawn_point;
     private bool isDamaged;
     private float damageCooldown;
 
@@ -13,6 +14,7 @@ public class PlayerDamage : MonoBehaviour
     {
         damageCooldown = 3;
         isDamaged = true;
+        spawn_point = transform.position;
     }
 
     // Update is called once per frame
@@ -21,17 +23,18 @@ public class PlayerDamage : MonoBehaviour
 
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         // Check if the collision involves an object tagged as "Ground"
         if (!isDamaged && collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("CoffeeCup"))
         {
-            hp -= 10;
+            hp -= 5;
         }
 
         if (hp < 0)
         {
-            Destroy(gameObject);
+            transform.position = spawn_point;
+            hp = 100;
         }
 
         DamageCooldown();
