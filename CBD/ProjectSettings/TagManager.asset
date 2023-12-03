@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - CoffeeCup
+  - Enemy
   layers:
   - Default
   - TransparentFX
