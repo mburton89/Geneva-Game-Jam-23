@@ -86,6 +86,7 @@ public class CEOBehaviour : MonoBehaviour
     {
         // Move towards the player
         Vector3 direction = HorizontalDirection(transform.position, player.position);
+        transform.LookAt(player);
         if (rb.velocity.magnitude <= maxSpeed)
         {
             rb.AddForce(direction * moveSpeed);
