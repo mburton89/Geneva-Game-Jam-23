@@ -10,27 +10,35 @@ public class CEOBehaviour : MonoBehaviour
     public float maxSpeed;
     public float jumpForce;
     public float attackDistance;
+    public float rangeAttackDistance;
     public bool isGrounded;
+    public bool canAttack;
+    public float attackCooldown;
 
     // Unity variables
     public Transform player;
     Rigidbody rb;
     public BossBar GreenHP;
+    public GameObject coffeeCupPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         hp = 100f;
         moveSpeed = 2f;
-        jumpForce = .2f;
+        jumpForce = .3f;
         maxSpeed = 5f;
         attackDistance = 10f;
+        rangeAttackDistance = 15f;
         isGrounded = false;
+        canAttack = true;
+        attackCooldown = 5f;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        coffeeCupPrefab = transform.Find("CoffeeCup").gameObject;
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-
     }
 
     // Update is called once per frame
@@ -38,10 +46,17 @@ public class CEOBehaviour : MonoBehaviour
     {
         MoveTowardsPlayer();
 
-        if (IsCloseToPlayer() && isGrounded)
+        if (canAttack)
+        {
+            Attack();
+            StartCoroutine(AttackCooldown());
+        }
+
+        if (IsCloseToPlayer(attackDistance) && isGrounded)
         {
             Jump();
         }
+
         Debug.Log(isGrounded);
     }
 
@@ -92,9 +107,9 @@ public class CEOBehaviour : MonoBehaviour
         } 
     }
 
-    bool IsCloseToPlayer()
+    bool IsCloseToPlayer(float distance)
     {
-        return HorizontalDistance(transform.position, player.position) <= attackDistance;
+        return HorizontalDistance(transform.position, player.position) <= distance;
     }
 
     void Jump()
@@ -105,9 +120,25 @@ public class CEOBehaviour : MonoBehaviour
         }
     }
 
+    IEnumerator AttackCooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
+    }
+
+    public void ThrowCoffeeCup()
+    {
+        GameObject coffeeCup = Instantiate(coffeeCupPrefab, transform.position, Quaternion.LookRotation(player.position - transform.position));
+
+        Destroy(coffeeCup, 5);
+    }
     void Attack()
     {
-
+        if (canAttack && IsCloseToPlayer(rangeAttackDistance))
+        {
+            ThrowCoffeeCup();
+        }
     }
 
     public void TakeDamage()
